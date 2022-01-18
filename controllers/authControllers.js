@@ -193,14 +193,19 @@ exports.searchGetController = async (req, res, next) => {
 
 exports.singleViewPageController = async (req, res, next) => {
     let { postId } = req.params
-    let post = await Post.findById(postId)
-    res.render('pages/singleViewPage',
-        {
-            title: 'single page view',
-            flashMessage: flash.getMessage(req),
-            error: {},
-            post
-        })
+    try {
+        let post = await Post.findById(postId)
+        res.render('pages/singleViewPage',
+            {
+                title: 'single page view',
+                flashMessage: flash.getMessage(req),
+                error: {},
+                post
+            })
+
+    } catch (e) {
+        next(e)
+    }
 }
 
 

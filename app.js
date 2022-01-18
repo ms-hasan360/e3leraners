@@ -28,16 +28,16 @@ app.use('/post', postRoutes)
 
 app.get('/', async (req, res) => {
 
-    let posts = await Post.find({ })
+    let posts = await Post.find({})
 
-    let users = await User.find({ })
+    let users = await User.find({})
 
     res.render('pages/index',
         {
             title: 'Home page',
             flashMessage: flash.getMessage(req),
-            posts : posts,
-            error : {},
+            posts: posts,
+            error: {},
             users
         })
 })
@@ -54,6 +54,11 @@ app.use((error, req, res, next) => {
         return res.render('pages/error/404', { flashMessage: {} })
     }
     res.render('pages/error/500', { flashMessage: {} })
+})
+
+
+app.get('*', (req, res) => {
+    res.render('pages/error/404', { flashMessage: {} })
 })
 
 
