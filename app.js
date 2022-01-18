@@ -42,19 +42,19 @@ app.get('/', async (req, res) => {
         })
 })
 
-// app.use((req, res, next) => {
-//     let error = new Error('404 Page Not Found')
-//     error.status = 404
-//     next(error)
+app.use((req, res, next) => {
+    let error = new Error('404 Page Not Found')
+    error.status = 404
+    next(error)
 
-// })
+})
 
-// app.use((error, req, res, next) => {
-//     if (error.status == 404) {
-//         return res.render('pages/error/404', { flashMessage: {} })
-//     }
-//     res.render('pages/error/500', { flashMessage: {} })
-// })
+app.use((error, req, res, next) => {
+    if (error.status == 404) {
+        return res.render('pages/error/404', { flashMessage: {} })
+    }
+    res.render('pages/error/500', { flashMessage: {} })
+})
 
 
 PORT = process.env.PORT || 8080
