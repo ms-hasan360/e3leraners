@@ -1,0 +1,60 @@
+<%- include('../partials/header.ejs') %>
+<%- include('../partials/navbar.ejs') %>
+
+
+        <% if(posts.length < 1 ) {%> 
+            <div class="container">
+                <p class="text-center" style="font-size: 20px; font-weight: 1000; color: red;">Data Not Found..</p>
+            </div>
+        <% }else{ %> 
+            <div class="container">
+                <div class="text-dark text-muted py-2">
+                    <span>Total post(<%= posts.length %>)</span> |
+                    <span>Total users(<%= users.length %>)</span>
+                </div>
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <% for(let i=posts.length-1; i>=0; i--) {%>
+                        <div class="col">
+                            <div class="card h-80">
+                                <img src="<%= posts[i].thumbnail %> " height="250" class="card-img-top shadow bg-body rounded" alt="#">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <a href="/auth/singlePage/<%= posts[i]._id %>" class="text-decoration-none text-dark">
+                                            <span style="font-size: 16px;" class="shadow-lg rounded text-dark"><%= posts[i].title.slice(0,32) %></span>
+                                        </a>
+                                    </h5>
+                                    <p class="card-text"><a href="/auth/singlePage/<%= posts[i]._id %>" class="text-decoration-underline text-dark">
+                                            <span style="font-size: small;"><%= posts[i].body.replace(/(<([^>]+)>)/ig,'').slice(0,120) %></span>
+                                        </a> </p>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">
+                                        <%= posts[i].author %>
+                                    </small> |
+                                    <small class="text-muted">
+                                        <%= posts[i].readTime %>
+                                    </small> |
+                                    <small class="text-muted">
+                                        <%= JSON.stringify(posts[i].createdAt).slice(1,12).replace("T", " " ) %>
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
+                </div>
+            </div>
+        <% } %> 
+        
+        </div>
+        </div>
+        </div>
+
+
+
+
+<%- include('../partials/subFooter.ejs') %>
+<%- include('../partials/footer.ejs') %>
+
+
+</body>
+</html>

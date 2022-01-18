@@ -1,0 +1,43 @@
+<%- include('../partials/header.ejs') %>
+    <%- include('../partials/navbar.ejs') %>
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <form action="/auth/adminDashboard" method="post" enctype="multipart/form-data">
+                        <h3 class="text-center">Create New Post</h3>
+                        <div class="mb-3">
+                            <label for="postTitle" class="form-label">Post Title</label>
+                            <input type="text" name="postTitle" class="form-control" placeholder="Post Title">
+                          </div>
+                          <div class="mb-3">
+                            <label for="postDescription" class="form-label">Post description</label>
+                            <textarea class="form-control" name="descriptionField" rows="3" placeholder="Write something about the post..."></textarea>
+                          </div>
+                          <div class="mb-3">
+                            <label for="fileUpload" class="form-label">File upload</label>
+                            <input type="file" class="form-control" name="fileUploader" />
+                          </div>
+                          <div class="mb-3">
+                            <input type="submit" class="form-control bg-primary border-dark btn btn-primary" value="Create New Post">
+                          </div>
+                    </form>
+                </div>
+                <div class="col-2"></div>
+            </div>
+        </div>
+
+
+        </div>
+        </div>
+        </div>
+
+
+        <%- include('../partials/subFooter.ejs') %>
+            <%- include('../partials/footer.ejs') %>
+
+                </body>
+
+                </html>

@@ -1,0 +1,71 @@
+<%- include('../partials/header.ejs') %>
+<%- include('../partials/navbar.ejs') %>
+
+
+
+            <p class="description">
+            <div class="container" >
+                <div class="row">
+                    <div class="col-lg-3">
+                        
+                    </div>
+                    <div class="col-lg-6 alert alert-success" role="alert">
+                        <h3 class="alert-heading text-center">
+                            Create New Account
+                        </h3>
+                        <form action="/auth/signup" method="POST">
+                            <label for="username" class="form-label text-dark"> 
+                              Username
+                            </label>
+                              <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1"><i class="nc-icon nc-circle-10"></i></span>
+                                <input type="text" name="username" class="form-control <%= error.username ? 'is-invalid' : '' %>" placeholder="Username" value="<%= value.username ? value.username : '' %>" />
+                              </div>
+
+                              <div class="form-label text-danger fw-bold">
+                                <%= error.username && error.username %> 
+                              </div>
+
+                            <label for="email" class="form-label text-dark">Email address</label>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1"><i class="nc-icon nc-email-85"></i></span>
+                                <input type="email" name="email" class="form-control <%= error.email ? 'is-invalid' : '' %>" value="<%= value.email ? value.email : '' %> " placeholder="Email address" />
+                              </div>
+                              <div class="form-label text-danger fw-bold">
+                                <%= error.email && error.email %> 
+                              </div>
+                              <label for="password" class="form-label text-dark">Password</label>
+                              <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1"><i class="nc-icon nc-lock-circle-open"></i></span>
+                                <input type="password" name="password" class="form-control <%= error.password ? 'is-invalid' : '' %>" placeholder="Password" />
+                              </div>
+                              <div class="form-label text-danger fw-bold">
+                                <%= error.password && error.password %> 
+                              </div>
+                              
+                              <div class="input-group mb-3">
+                                <button type="submit" class="btn btn-primary form-control bg-primary text-white border-0">Create New Account</button>
+                              </div>
+                              <hr />
+                              <p class="text-dark text-center">
+                                  Already have an account in E<sup>3</sup>Learners? <a href="/auth/login" class="text-dark">log in</a>
+                              </p>
+                        </form>
+                    </div>
+                    <div class="col-lg-3">
+
+                    </div>
+                </div>
+            </div>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<%- include('../partials/subFooter.ejs') %>
+<%- include('../partials/footer.ejs') %>
+
+
+</body>
+</html>

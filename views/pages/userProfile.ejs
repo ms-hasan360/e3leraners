@@ -1,0 +1,60 @@
+<%- include('../partials/header.ejs') %>
+<%- include('../partials/navbar.ejs') %>
+
+
+
+                    <div class="container">
+                        <table class="table table-success table-striped">
+                            <tr>
+                                <td>
+                                    Profile image
+                                </td>
+                                <td>
+                                    <img src="<%= user.profilePics %>" height="50px" alt="userProfileIamge"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Username
+                                </td>
+                                <td>
+                                    <%= user.username %> 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Email
+                                </td>
+                                <td>
+                                    <%= user.email %> 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Password
+                                </td>
+                                <td>
+                                    *******
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Profile created
+                                </td>
+                                <td>
+                                    <%= user.createdAt %> 
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+<%- include('../partials/subFooter.ejs') %>
+<%- include('../partials/footer.ejs') %>
+
+</body>
+</html>
