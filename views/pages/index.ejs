@@ -18,9 +18,14 @@
                             <div class="card h-80">
                                 <img src="<%= posts[i].thumbnail %> " height="250" class="card-img-top shadow bg-body rounded" alt="#">
                                 <div class="card-body">
+                                <div>
+                                    <% for(let j=0; j < 3; j++) {%> 
+                                        <span style="color: darkblue;">#<%= posts[i].tags[j] %></span> 
+                                        <% } %> 
+                                </div>
                                     <h5 class="card-title">
                                         <a href="/auth/singlePage/<%= posts[i]._id %>" class="text-decoration-none text-dark">
-                                            <span style="font-size: 16px;"><%= posts[i].title.slice(0,32) %></span>
+                                            <span style="font-size: 16px;color: mediumblue;"><%= posts[i].title.slice(0,32) %></span>
                                         </a>
                                     </h5>
                                     <p class="card-text"><a href="/auth/singlePage/<%= posts[i]._id %>" class="text-decoration-underline text-dark">
