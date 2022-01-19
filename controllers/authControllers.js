@@ -146,24 +146,54 @@ exports.dashboardController = (req, res, next) => {
 }
 
 
-exports.adminDashboardController = (req, res, next) => {
-    res.render('pages/adminDashboard',
-        {
-            title: 'Admin Dashboard',
-            flashMessage: flash.getMessage(req),
-            error: {}
 
-        })
-}
-
-exports.adminPostDashboardController = (req, res, next) => {
-    res.render('pages/adminDashboard',
+exports.adminController = (req, res, next) => {
+    res.render('pages/admin',
         {
-            title: 'Admin Dashboard',
+            title: 'Admin',
             flashMessage: flash.getMessage(req),
             error: {}
         })
 }
+
+
+exports.allPost = async (req, res, next) => {
+
+    try {
+        let posts = await Post.find({})
+        res.render('pages/allPost',
+            {
+                title: 'All post',
+                flashMessage: flash.getMessage(req),
+                error: {},
+                posts
+            })
+    } catch (e) {
+        next(e)
+    }
+}
+
+
+exports.allUser = async (req, res, next) => {
+
+    let userStatus= req.session
+
+    try {
+        let users = await User.find({})
+
+        res.render('pages/allUser',
+            {
+                title: 'All user',
+                flashMessage: flash.getMessage(req),
+                error: {},
+                users,
+                userStatus
+            })
+    } catch (e) {
+        next(e)
+    }
+}
+
 
 
 exports.searchGetController = async (req, res, next) => {

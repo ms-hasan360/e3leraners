@@ -20,6 +20,8 @@ exports.createPostPostController = async (req, res, next) => {
 
     let { title, body, tags } = req.body
 
+    console.log(body);
+
     let errors = validationResult(req).formatWith(errorFormatter)
 
     if (!errors.isEmpty()) {

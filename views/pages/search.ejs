@@ -2,63 +2,76 @@
     <%- include('../partials/navbar.ejs') %>
 
 
-            <% if(post.length > 0) {%> 
-                <div class="container">
-                    <div class="text-dark text-muted py-2">
-                        <span>Search Result - <%= term %>(<%= post.length %>)</span>
-                    </div>
-                    <div class="row row-cols-1 row-cols-md-3 g-4">
-                        <% for(let i=post.length-1; i>=0; i--) {%>
-                            <div class="col">
-                                <div class="card h-80">
+        <% if(post.length> 0) {%>
+            <div class="container">
+                <div class="text-dark pb-2">
+                    <span style="font-weight: 1000;font-size: 16px;">Search Result - <%= term %>(<%= post.length %>)</span>
+                </div>
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <% for(let i=post.length-1; i>=0; i--) {%>
+                        <div class="col">
+                            <div class="card h-80">
+                                <p>
                                     <img src="<%= post[i].thumbnail %> " height="250"
-                                        class="card-img-top shadow bg-body rounded" alt="#">
-                                    <div class="card-body">
-                                        <h5 class="card-title">
-                                            <a href="/auth/singlePage/<%= post[i]._id %>"
-                                                class="text-decoration-none text-dark">
-                                                <span style="font-size: 16px;">
-                                                    <%= post[i].title.slice(0,32) %>
-                                                </span>
-                                            </a>
-                                        </h5>
-                                        <p class="card-text"><a href="/auth/singlePage/<%= post[i]._id %>"
-                                                class="text-decoration-underline text-dark">
-                                                <span style="font-size: small;">
-                                                    <%= post[i].body.replace(/(<([^>]+)>)/ig,'').slice(0,120) %>
-                                                </span>
-                                            </a> </p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">
-                                            <%= post[i].author %>
-                                        </small> |
-                                        <small class="text-muted">
-                                            <%= post[i].readTime %>
-                                        </small> |
-                                        <small class="text-muted">
-                                            <%= JSON.stringify(post[i].createdAt).slice(1,12).replace("T", " " ) %>
-                                        </small>
-                                    </div>
+                                    class="card-img-top shadow bg-body rounded" alt="#" />
+                                </p>
+
+                                <div>
+                                    <p class="px-2">
+                                        <% for(let j=0; j < 3; j++) {%>
+                                            <span style="color: darkblue;">#<%= post[i].tags[j] %></span>
+                                        <% } %>
+                                    </p>
+                                </div>
+                                <div>
+                                    <h5 class="px-2">
+                                        <a href="/auth/singlePage/<%= post[i]._id %>"
+                                            class="text-decoration-none text-dark">
+                                            <span style="font-size: 16px;">
+                                                <%= post[i].title.slice(0,32) %>
+                                            </span>
+                                        </a>
+                                    </h5>
+                                    <p class="px-2">
+                                        <a href="/auth/singlePage/<%= post[i]._id %>"
+                                            class="text-decoration-underline text-dark">
+                                            <span style="font-size: small;">
+                                                <%= truncate(post[i].body) %>
+                                            </span>
+                                        </a> 
+                                    </p>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">
+                                        <%= post[i].author %>
+                                    </small> |
+                                    <small class="text-muted">
+                                        <%= post[i].readTime %>
+                                    </small> |
+                                    <small class="text-muted">
+                                        <%= moment(post[i].createdAt) %>
+                                    </small>
                                 </div>
                             </div>
-                            <% } %>
-                    </div>
-            <% } else { %>
-                <div class="container">
-                    <div class="text-dark text-muted py-2">
-                        <span>Search Result - <%= term %>(<%= post.length %>)</span>
-                    </div>
-                    <p class="text-center" style="font-size: 20px; font-weight: 1000; color: red;">Data Not Found..</p>
+                        </div>
+                        <% } %>
                 </div>
-            <% } %> 
-        </div>
-        </div>
-        </div>
+                <% } else { %>
+                    <div class="container">
+                        <div class="text-dark text-muted py-2">
+                            <span>Search Result - <%= term %>(<%= post.length %>)</span>
+                        </div>
+                        <p class="text-center" style="font-size: 20px; font-weight: 1000; color: red;">Data Not Found..
+                        </p>
+                    </div>
+                    <% } %>
+            </div>
+            </div>
+            </div>
 
-        <%- include('../partials/subFooter.ejs') %>
-            <%- include('../partials/footer.ejs') %>
+            <%- include('../partials/subFooter.ejs') %>
+                <%- include('../partials/footer.ejs') %>
 
-                </body>
+                    </body>
 
-                </html>
+                    </html>

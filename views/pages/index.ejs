@@ -29,7 +29,7 @@
                                         </a>
                                     </h5>
                                     <p class="card-text"><a href="/auth/singlePage/<%= posts[i]._id %>" class="text-decoration-underline text-dark">
-                                            <span style="font-size: small;"><%= posts[i].body.replace(/(<([^>]+)>)/ig,'').slice(0,120) %></span>
+                                            <span style="font-size: small;"><%= truncate(posts[i].body) %></span>
                                         </a> </p>
                                 </div>
                                 <div class="card-footer">
@@ -40,7 +40,7 @@
                                         <%= posts[i].readTime %>
                                     </small> |
                                     <small class="text-muted">
-                                        <%= JSON.stringify(posts[i].createdAt).slice(1,12).replace("T", " " ) %>
+                                        <%= moment(posts[i].createdAt) %>
                                     </small>
                                 </div>
                             </div>

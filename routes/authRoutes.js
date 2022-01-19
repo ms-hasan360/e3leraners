@@ -2,7 +2,6 @@ const router = require('express').Router()
 const signupValidator = require('../validator/signupValidator')
 
 const { isAuthenticated, isUnAuthenticated } = require('../middleware/authMiddleware')
-const upload = require('../middleware/uploadMiddleware')
 
 
 
@@ -15,10 +14,11 @@ const {
     userProfileController,
     dashboardController,
     userSettingController,
-    adminDashboardController,
-    adminPostDashboardController,
+    allPost,
+    allUser,
     singleViewPageController,
-    searchGetController
+    searchGetController,
+    adminController
 } = require('../controllers/authControllers')
 const { is } = require('cheerio/lib/api/traversing')
 
@@ -33,8 +33,10 @@ router.get('/dashboard', isAuthenticated, dashboardController)
 router.get('/singlePage/:postId', singleViewPageController)
 router.get('/search', searchGetController)
 
-router.get('/adminDashboard', adminDashboardController)
-router.post('/adminDashboard', upload.single('fileUploader'), adminPostDashboardController)
+
+router.get('/admin', adminController)
+router.get('/allPost', allPost)
+router.get('/allUser', allUser)
 router.get('/logout', logoutController)
 
 

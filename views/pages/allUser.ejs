@@ -1,0 +1,63 @@
+<%- include('../partials/header.ejs') %>
+  <%- include('../partials/navbar.ejs') %>
+
+
+    <div class="container">
+
+      <a href="/post/create" class="btn btn-primary">Create A New Post</a>
+      <a href="/auth/allPost" class="btn btn-primary">All Post</a>
+      <a href="/auth/allUser" class="btn btn-primary">All User</a>
+
+    </div>
+
+
+
+    <div class="container">
+      <table class="table table-success table-striped">
+        <tr class="text-center">
+          <th>#</th>
+          <th>Username</th>
+          <th>Active</th>
+          <th>Time</th>
+          <th>Action</th>
+        </tr>
+        <% let j=1 %>
+          <% for(let i=0;i<users.length;i++){ %>
+            <tr class="text-center">
+              <td>
+                <%= j++ %>
+              </td>
+              <td>
+                <%= users[i].username %>
+              </td>
+              <td>
+                <% if(userStatus.isLoggedIn) {%>
+                    On
+                <% }else{ %> 
+                    Off
+                <% } %> 
+              </td>
+              <td>
+                <%= moment(users[i].createdAt) %>
+              </td>
+              <td>
+                <button type="button" class="btn btn-primary">Update</button>
+                <button type="button" class="btn btn-danger">Delete</button>
+              </td>
+            </tr>
+            <% } %>
+      </table>
+    </div>
+
+
+    </div>
+    </div>
+    </div>
+
+
+    <%- include('../partials/subFooter.ejs') %>
+      <%- include('../partials/footer.ejs') %>
+
+        </body>
+
+        </html>

@@ -3,7 +3,7 @@ window.onload = function () {
     tinymce.init({
         selector: '#tiny-mce-post-body',
         plugins: ['advlist link lists autosave code', 'preview', 'searchreplace', 'wordcount', 'media table emoticons image imagetools'],
-        toolbar: 'blod italic underline | alignleft alignright aligncenter alignjustify |  bulllist numlist outdent indent | link image media | forecolor backcolor emoticons |  code preview',
+        toolbar: 'blod italic underline | alignleft alignright aligncenter alignjustify |  bulllist numlist outdent indent | link media | forecolor backcolor emoticons |  code preview',
         height: 300,
         automatic_uploads: true,
         images_upload_url: '/uploads/postimage',

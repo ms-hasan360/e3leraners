@@ -11,6 +11,7 @@ const Post = require('./models/Post')
 const User = require('./models/User')
 
 const flash = require('./utils/Flash')
+const middleware = require('./middleware/middleware')
 
 const app = express()
 
@@ -29,7 +30,6 @@ app.use('/post', postRoutes)
 app.get('/', async (req, res) => {
 
     let posts = await Post.find({})
-
     let users = await User.find({})
 
     res.render('pages/index',
@@ -60,6 +60,9 @@ app.use((error, req, res, next) => {
 app.get('*', (req, res) => {
     res.render('pages/error/404', { flashMessage: {} })
 })
+
+
+
 
 
 PORT = process.env.PORT || 8080
