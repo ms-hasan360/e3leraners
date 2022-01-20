@@ -19,7 +19,7 @@
                             </label>
                               <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1"><i class="nc-icon nc-circle-10"></i></span>
-                                <input type="text" name="username" class="form-control <%= error.username ? 'is-invalid' : '' %>" placeholder="Username" value="<%= value.username ? value.username : '' %>" />
+                                <input type="text" name="username" class="form-control <%= error.username ? 'is-invalid' : '' %>" placeholder="Username" autocomplete="off" value="<%= value.username ? value.username : '' %>" />
                               </div>
 
                               <div class="form-label text-danger fw-bold">
@@ -29,7 +29,7 @@
                             <label for="email" class="form-label text-dark">Email address</label>
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1"><i class="nc-icon nc-email-85"></i></span>
-                                <input type="email" name="email" class="form-control <%= error.email ? 'is-invalid' : '' %>" value="<%= value.email ? value.email : '' %> " placeholder="Email address" />
+                                <input type="email" name="email" class="form-control <%= error.email ? 'is-invalid' : '' %>" value="<%= value.email ? value.email : '' %> " autocomplete="off" placeholder="Email address" />
                               </div>
                               <div class="form-label text-danger fw-bold">
                                 <%= error.email && error.email %> 
@@ -37,7 +37,7 @@
                               <label for="password" class="form-label text-dark">Password</label>
                               <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1"><i class="nc-icon nc-lock-circle-open"></i></span>
-                                <input type="password" name="password" class="form-control <%= error.password ? 'is-invalid' : '' %>" placeholder="Password" />
+                                <input type="password" name="password" class="form-control <%= error.password ? 'is-invalid' : '' %>" autocomplete="off" placeholder="Password" />
                               </div>
                               <div class="form-label text-danger fw-bold">
                                 <%= error.password && error.password %> 
