@@ -4,6 +4,7 @@ const { validationResult } = require('express-validator')
 const User = require('../models/User')
 const flash = require('../utils/Flash')
 const Post = require('../models/Post')
+const Profile = require('../models/Profile')
 const errorFormatter = require('../utils/validationErrorFormatter')
 
 
@@ -176,7 +177,7 @@ exports.allPost = async (req, res, next) => {
 
 exports.allUser = async (req, res, next) => {
 
-    let userStatus= req.session
+    let userStatus = req.session
 
     try {
         let users = await User.find({})
@@ -238,6 +239,26 @@ exports.singleViewPageController = async (req, res, next) => {
     }
 }
 
+
+exports.deleteUserController = async (req, res, next) => {
+    let { userId } = req.params
+    try {
+        let user = await User.findOne({ _id: userId })
+        if (!user) {
+            let error = new Error('404 Page not Found')
+            error.status = 404
+            throw error
+        }
+        await User.findOneAndDelete({ _id: userId })
+        await Profile.findOneAndDelete(
+            { _id: req.user._id },
+            { $pull: { 'auth': userId } }
+        )
+        res.redirect('/auth/allUser')
+    } catch (e) {
+        next(e)
+    }
+}
 
 
 

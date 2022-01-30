@@ -130,7 +130,7 @@ exports.editPostPostController = async (req, res, next) => {
         await Post.findOneAndUpdate(
             { _id: post._id },
             { $set: { title, body, tags, thumbnail } },
-            {new :true}
+            { new: true }
         )
         res.redirect('/posts/edit/' + post._id)
 
@@ -140,9 +140,9 @@ exports.editPostPostController = async (req, res, next) => {
 }
 
 exports.deletePostGetController = async (req, res, next) => {
-    let {postId} = req.params
+    let { postId } = req.params
     try {
-        let post = await Post.findOne({ author: req.user._id, _id: postId })
+        let post = await Post.findOne({_id: postId })
         if (!post) {
             let error = new Error('404 Page not Found')
             error.status = 404
@@ -151,15 +151,15 @@ exports.deletePostGetController = async (req, res, next) => {
         await Post.findOneAndDelete({ _id: postId })
         await Profile.findOneAndDelete(
             { _id: req.user._id },
-            { $pull: { 'posts': postId } }
+            { $pull: { 'post': postId } }
         )
-        res.redirect('/posts')
+        res.redirect('/auth/allPost')
     } catch (e) {
         next(e)
     }
 }
 
-exports.postsGetcontroller =async (req, res, next) => {
+exports.postsGetcontroller = async (req, res, next) => {
     try {
         let posts = await Post.find({ author: req.user._id })
         res.render('pages/index', {
@@ -168,7 +168,7 @@ exports.postsGetcontroller =async (req, res, next) => {
             error: {},
             flashMessage: {}
         })
-        
+
     } catch (e) {
         next(e)
     }

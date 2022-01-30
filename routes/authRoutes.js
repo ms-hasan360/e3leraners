@@ -18,20 +18,24 @@ const {
     allUser,
     singleViewPageController,
     searchGetController,
-    adminController
+    adminController,
+    deleteUserController
 } = require('../controllers/authControllers')
-const { is } = require('cheerio/lib/api/traversing')
+const { findByIdAndDelete } = require('../models/Profile')
 
 
 router.get('/signup', isUnAuthenticated, signupGetController)
 router.post('/signup', signupValidator, signupPostController)
-router.get('/login',  isUnAuthenticated, loginGetGetController)
+router.get('/login', isUnAuthenticated, loginGetGetController)
 router.post('/login', loginPostGetController)
-router.get('/userProfile', isAuthenticated,  userProfileController)
-router.get('/userSetting', isAuthenticated,  userSettingController)
+router.get('/userProfile', isAuthenticated, userProfileController)
+router.get('/userSetting', isAuthenticated, userSettingController)
 router.get('/dashboard', isAuthenticated, dashboardController)
 router.get('/singlePage/:postId', singleViewPageController)
 router.get('/search', searchGetController)
+
+
+router.get('/delete/:userId', deleteUserController)
 
 
 router.get('/admin', adminController)
