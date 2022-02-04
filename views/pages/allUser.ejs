@@ -41,8 +41,64 @@
                 <%= moment(users[i].createdAt) %>
               </td>
               <td>
-                <button type="button" class="btn btn-primary">Update</button>
-                <button type="button" class="btn btn-danger"><a href="/auth/delete/<%= users[i]._id %> ">Delete</a></button>
+               
+                <!-- Button trigger modal -->
+                <button type="button" id="updatebtn" class="btn btn-primary" data-toggle="modal" data-target="#updateStaticBackdrop">
+                  Update
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="updateStaticBackdrop">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Update User</h5>
+                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <label class="text-start">Username</label>
+                       <input type="text" class="form-control" value="<%= users[i].username %>" required>
+                       <label>Email</label>
+                       <input type="text" class="form-control" disabled value="<%= users[i].email %>">
+                        </p>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                       <a href="#">
+                        <button type="button" class="btn btn-primary">Update</button>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+
+                <!-- Button trigger modal -->
+                    <button type="button" id="deletebtn" class="btn btn-danger" data-toggle="modal" data-target="#deleteStaticBackdrop">
+                      Delete
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="deleteStaticBackdrop">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="deleteStaticBackdropLabel">Delete User</h5>
+                            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body d-flex">
+                           <p class="mr-auto text-danger" style="font-size: 15px;">Are you sure delete the user?
+                            </p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                           <a href="#">
+                            <button type="button" class="btn btn-danger">Delete</button>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
               </td>
             </tr>
             <% } %>
@@ -57,6 +113,7 @@
 
     <%- include('../partials/subFooter.ejs') %>
       <%- include('../partials/footer.ejs') %>
+      <script src="../../scripts/delete.js"></script>
 
         </body>
 

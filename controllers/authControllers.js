@@ -263,6 +263,25 @@ exports.deleteUserController = async (req, res, next) => {
 
 
 
+exports.categoryController = async (req, res, next) => {
+    try {
+        res.render('pages/category',
+            {
+                title: 'Category',
+                flashMessage: flash.getMessage(req),
+                error: {}
+            })
+
+    } catch (e) {
+        next(e)
+    }
+}
+
+
+
+
+
+
 
 exports.logoutController = (req, res, next) => {
     req.session.destroy(e => {

@@ -19,7 +19,8 @@ const {
     singleViewPageController,
     searchGetController,
     adminController,
-    deleteUserController
+    deleteUserController,
+    categoryController
 } = require('../controllers/authControllers')
 const { findByIdAndDelete } = require('../models/Profile')
 
@@ -33,6 +34,7 @@ router.get('/userSetting', isAuthenticated, userSettingController)
 router.get('/dashboard', isAuthenticated, dashboardController)
 router.get('/singlePage/:postId', singleViewPageController)
 router.get('/search', searchGetController)
+router.get('/category', categoryController)
 
 
 router.get('/delete/:userId', deleteUserController)
